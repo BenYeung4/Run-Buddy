@@ -4,63 +4,105 @@
     box-sizing: border-box;
 }
 
+:root{
+    --primary-color: #fce138;
+    --secondary-color: #024e76;
+    --tertiary-color: #39a6b2;
+}
 body {
-    color: #39a6b2;
+    color: var(--tertiary-color);
     font-family: Helvetica, Arial, sans-serif;
   }
 
 header {
     padding: 20px 35px;
-    background-color: #39a6b2;
+    background-color: var(--tertiary-color);
+    /*displaying flexbox, just this alone gets all the header alligned*/
+    display: flex;
+    justify-content: space-between;  /*uses the unused space between two elements and spaces it out*/
+    flex-wrap: wrap;
+    position: -webkit-sticky; /*put this in, for older web browesers to use*/
+    position: sticky;  /*keeps the header frozen while scrolling down*/
+    top: 0; /*tells the positions sticky where to freeze*/
+    background-image: url('../images/hero-bg.jpg'); /*these background was added so it can flow*/
+    background-size: cover;
+    background-attachment: fixed; /* this is set with the80% so it can allign witht he bero background*/
+    background-position: 80%; /*goes hand and hand with the background attachment fixed*/
+    z-index: 9999; /*keeping only the header stuff on top*/
 }
 
 header h1{
     font-weight: bold;
     font-size: 36px;
-    color: #fce138;
+    color: var(--primary-color);
     margin: 0;
-    display: inline;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5); /*sets the shadow with the 10px, then the color black, and last is the transparancy*/
 }
 
 header a {
     text-decoration: none;
-    color: #fce138;
+    color: var(--primary-color);
 }
 
 header nav{
-    float: right;
     margin: 7px 0;
 }
 
 header nav ul li {
     display: inline;
+    flex-wrap: wrap; /*allows the content to be able to wrap*/
+    justify-content: space-between; /*uses the unused space between two elements and spaces it out*/
+    align-items: center; /*moves items inside the flex on the Y-axis.  so able to go up or down or stetech, or center*/
+    list-style: none; /*removes the bullet points image, able to change the styles with this*/
 }
 
 header nav ul li a {
-    margin: 0 30px;
+    /*margin: 0 30px;  --removed due to implmenting to other devices, rather using padding*/
+    padding: 10px 15px;  /*created a tighter navigation menu*/
     font-weight: lighter;
-    font-size: 22px;
+    font-size: 1.5vw; /*different value for font size, instead of px we use vw*/
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
+
+/*adds spacing for each section*/
+section {
+    padding: 60px;
+}
+
+header nav ul li a:hover {  /*this is to set the effect of the button*/
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    border-radius: 15px;
+    text-shadow: none;
+}
+
 
 /* Hero Style Start */
 .hero {
   background-image: url('../images/hero-bg.jpg');
-  height: 600px;
   background-size: cover;
-  background-position: center;
-  position: relative;
+  background-position: 80%;
+  background-attachment: fixed;
+  display: flex;     /* from display to flex-wrap helps set the hero to the right while webpage mode*/
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  /*height: 600px; - initially started but since we using flexbox, this is not used anymore*/
+  /*position: relative;  - initially started but since we using flexbox, this is not used anymore*/
 }
-/* Hero Style End */
-
 .hero-form {
-  border: 3px solid #024e76;
-  background-color: #fce138;
+  border: 3px solid var(--secondary-color);
+  background-color: rgba(252,225,56,0.8);  /*sets the overall background to be yellow and transparent*/
   padding: 20px;
-  width: 500px;
-  color: #024e76;
-  position: absolute;
+  color: var(--secondary-color);
+  width: 40%; /*using % instead of px, helps with the adjustment of view based on platform of use*/
+  margin: 3.5%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5); /* sets transparancy with the color, google HEX to RGB converter*/
+  border-radius: 15px;  /* rounds the borders*/
+  /*position: absolute; -from here to width V
   bottom: 120px;
   right: 140px;
+  width: 500px;     - initially started but since we using flexbox, this is not used anymore*/
 }
 
 .hero-form h3 {
@@ -72,203 +114,500 @@ header nav ul li a {
 }
 
 .form-input {
-  border: 1px solid #024e76;
+  border: 1px solid var(--secondary-color);
   display: block;
   padding: 7px 15px;
   font-size: 16px;
-  color: #024e76;
+  color: var(--secondary-color);
   width: 100%;
   margin-bottom: 15px;
+  border-radius: 15px;  /* rounds the borders*/
+  background-color: rgba(255,255,255, 0.75); /*sets the color and transparancy of the text*/
 }
 
+.form-input:focus{
+    background-color: rgba(255,255,255,1);  /*makes the before input to be transparent*/
+    outline: none; /*removes the border when the item is highlighted this way it looks better and rounded with the setting*/
+}
 .hero-form label {
   margin: 0 5px;
 }
 
 .hero-form button {
-  color: #fce138;
-  background-color: #024e76;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
   border: none;
   padding: 10px 20px;
   font-size: 16px;
+  border-radius: 15px;  /* rounds the borders*/
 }
 
+.hero-cta{
+    width: 35%;
+    text-align: right;
+    margin: 3.5%;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.hero-cta h2{
+    font-style: italic;
+    font-size: 55px;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.hero-form button:hover { /*set effect for button*/
+background-color: var(--tertiary-color);
+}
+
+.checkbox-wrapper input, .radio-wrapper input {
+    opacity: 0; /* makes the chekcboxes invisiable*/
+}
+
+.checkbox-wrapper label, .radio-wrapper label { /*sets the location of the checkboxes*/
+    position: relative;
+    left: 10px;
+    margin: 10px;
+    line-height: 1.6;
+}
+
+.checkbox-wrapper label::before, .radio-wrapper label::before {  /* produces the boxes for the checkbox before activating them*/
+    content: "";
+    height: 20px;
+    width: 20px;
+    background: rgba(255, 255, 255, 0.75);  
+    border: 1px solid var(--secondary-color);  
+    position: absolute;
+    top: -4px;
+    left: -30px;
+}
+
+.radio-wrapper label::before { /*rounds the boxes*/
+    border-radius: 50%;
+}
+
+.radio-wrapper label::after {
+    content:"";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    position: absolute;
+    left: -29px;
+    top: -3px;
+    background-image: radial-gradient(circle, var(--tertiary-color), var(--secondary-color));  /*makes the button look radient*/
+}
+
+.checkbox-wrapper label::after{
+    content:"";
+    height: 6px;
+    width: 14px;
+    border-left: 2px solid var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    position: absolute;
+    left: -26px;
+    top: 1px;
+    transform: rotate(-58deg);  /*rotates the check mark*/
+}
+
+
+
+.checkbox-wrapper input + label::after, 
+.radio-wrapper input + label::after {
+  content: none;  /*makes it that after clicking, it shows*/
+}
+
+.checkbox-wrapper input:checked + label::after, 
+.radio-wrapper input:checked + label::after {
+  content: "";
+}
+
+
+/* Hero Style End */
 
 /* for What we do*/
-  .intro {
+
+
+  /*.intro {
     text-align: center;
-}
+} --removed due to flexbox*/
 
 .intro p {
     line-height: 1.7;
-    color: #39a6b2;
+    color: var(--tertiary-color);
     width: 80%;
     font-size: 20px;
      /* since width has been shrunk, less than 100%, we use margin: 0 auto to help even the boarders, thus centering the text*/
     margin: 0 auto;
+    text-align: center;
   }
 
-/*What You Do*/
-.steps {
-    text-align: center;
-    background: #fce138;
+/*Steps section*/
+.step {
+    /*text-align: center; removed due to flexbox*/
+    background: var(--primary-color);
+    margin: 50px auto;
+    padding-bottom: 50px;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    
 }
 
+.step:not(:last-child){   /*sets the border for everything on the steps besides the very last one*/
+    border-bottom: 1px solid var(--tertiary-color);
+}
+}
+
+.flex-row{    /*sets the sections to be able to flex*/
+    display: flex;
+}
 /*sets the border colors for all the sections, thus including the .primary, .secondary ... below*/
 .section-title {
-    font-size: 55px;
-    display: inline-block;
-    padding: 0 100px 20px 100px;
-    border-bottom: 3px solid;
-    margin-bottom: 35px;
-    color: #024e76;
+    font-size: 48px;  /*48 is perfect size for all devices*/
+    padding-bottom: 20px;
+    text-align: center;
+    margin: 0 auto 35px auto;
+    width: 50%;
+    color: var(--secondary-color);
+    border-bottom: 3px solid;   /* gets the border to show on the bottom*/
 }
 
 .primary-border {
-    border-color: #fce138;
+    border-color: var(--primary-color);
 }
 
 .secondary-border {
-    border-color: #39a6b2;
+    border-color: var(--tertiary-color);
 }
 
-.steps div{
-    margin-bottom: 80px;
+.steps {
+    background: var(--primary-color);
 }
-
-.steps img {
-    width: 15%;
-    margin: 10px 0;
-}
-
-.steps h3{
-    color: #024e76;
+.step h3{
+    flex: 1 30%; /* the 1 represent the size it will take while zooming in and out, comared to .ste-text's flex: 12 which will have 12 x more than usual space*/
+    color: var(--secondary-color);
     font-size: 46px;
     margin-top: 10px;
 }
 
-.steps p{
-    color: #39a6b2;
-    font-size: 23px;
+.step-text {
+    flex:12;
 }
-/* used to get h1,2,3 to arrange size in <p> */
-.steps span {
-    font-size: 38px;
+
+.step-text p{
+    color: var(--tertiary-color);
+    font-size: 18px;
 }
+
+.step-text h4{
+    font-size: 26px;
+    line-height: 1.5;
+    color: var(--secondary-color);
+}
+
+.step-info {
+    flex: 2 70%;  /*helps the text grow when screen grows*/
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.step-img {
+    flex: 1 12%;
+    margin-right: 20px;
+}
+
+.step-img img {
+    max-width: 100%;  /*sets the size limit when zooming in and out*/
+}
+
 
 /*trainer section */
 .trainers{
-    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
-    /*below, text-left & text-right, are utility tools to align the texts, no generic name so it can be applyed to the html */
+/*text-align: center; --removed due to flexbox
+    below, text-left & text-right, are utility tools to align the texts, no generic name so it can be applyed to the html 
 .text-left {
     text-align: left;
-}
-
 .text-right {
-    text-align: right;
-}
+    text-align: right;  - moves text to the right*/
+
+
+
 .trainer{
-    width: 900px;
-    margin: 0 auto 30px auto;
-    background: #024e76;
-    color: #fce138;
-    /* overflow helps tell <article> that there is content inside them and it needs to look for it and take accountable for the file, in turn, centering everything and matching the style */
-    overflow: auto;
+    
+    margin:20px;              /* 0 auto 30px auto;*/
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    flex:1; /*if all value of flex is 1, then they share it equaly*/
 }
+    /* was insider trainer for the text coloring width: 900px;
+    overflow helps tell <article> that there is content inside them and it needs to look for it and take accountable for the file, in turn, centering everything and matching the style 
+    overflow: auto;*/
+
 
 .trainer img{
-    width: 35%;
-    float: left;
+    width: 100%;
+    /* float: left; --originally had image be on the left*/
 }
 
 .trainer-bio{
-    padding: 35px;
-    float: left;
-    width: 65%;
+    padding: 25px;
+    line-height: 1.3;
+    
+    /*float: left;
+    width: 65%;  -originally had it till flex-box*/
 }
 
 .trainer-bio h3 {
-    font-size: 32px;
-    margin-bottom: 8px;
+    font-size: 28px;
 }
 
 .trainer-bio h4 {
     font-weight: lighter;
-    font-size: 26px;
-    margin-bottom: 25px;
+    font-size: 22px;
+    margin-bottom: 15px;
 }
 
 .trainer-bio p {
     font-size: 17px;
-    line-height: 1.3;
 }
 
+/*footer start*/
 footer {
-    background: #fce138;
+    background: var(--primary-color);
     width: 100%;
     padding: 40px 35px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 footer h2 {
-    display: inline;
-    color: #024e76;
+    color: var(--secondary-color);
     font-size: 30px;
     margin: 0;
 }
 
 footer div {
-    float: right;
     line-height: 1.5;
     text-align: right;
 }
 
 footer a{
-    color: #024e76;
+    color: var(--secondary-color);
 }
 
-/*adds spacing for each section*/
-section {
-    padding: 60px;
-}
+/*footer ends*/
+
 
 /*start of contact-info*/
 .contact{
-text-align:center;
-background-color:#024e76;
+/*text-align:center; -- removed due to flexbox*/
+background-color:var(--secondary-color);
 }
 
+.contact-info{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contact-info>*{    /* * is used for all characters with contact-info and > is all the children under the concat*/
+    flex: 1;
+    margin: 15px;
+}
 .contact h2{
-color:#fce138;
+color: var(--primary-color);
 }
 
 .contact-info iframe{
-width: 400px;
+/* width: 400px; ---removed cause of flex-box*/
 height: 400px;
 }
 /* adjusts image and text to be left and right*/
 .contact-info div{
-    width: 410px;
+    /*width: 410px;
     display: inline-block;
     vertical-align: top;
     text-align: left;
-    margin: 30px 0 0 60px;
+    margin: 30px 0 0 60px;  removed due to flex-box*/
     color: white;
 }
 
 .contact-info h3{
-    color: #fce138;
+    color: var(--primary-color);
     font-size: 32px;
 }
 
 .contact-info p, .contact-info address{
     margin: 20px 0;
     line-height: 1.5;
-    font-size: 20px;
+    font-size: 16px;
     font-style: normal;
 }
 
 .contact-info a{
-    color: #fce138;
+    color: var(--primary-color);
+}
+
+.contact-form input, .contact-form textarea{
+    border: 1px solid var(--secondary-color);
+    display: block;
+    padding: 7px 15px;
+    font-size: 16px;
+    color: var(--secondary-color);
+    width: 100%;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    border-radius: 15px;  /* rounds the borders*/
+}
+
+.contact-form button{
+    width: 100%;
+    border: none;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 15px 0;
+    font-size: 16px;
+    border-radius: 15px;  /* rounds the borders*/
+}
+
+.contact-form button:hover { /*set effect for button*/
+    color: var(--primary-color);
+    background: var(--tertiary-color);
+}
+
+.contact-form input, .contact-form textarea{ /*transprent background until clicked*/
+background-color: rgba(255,255,255,0.75);
+outline: none;
+}
+.contact-form input:focus, .contact-form textarea:focus{ /*when clicked, not transparent anymore*/
+background-color: rgba(255,255,255, 1);
+outline: none;
 }
 /*Reach out styles end*/
+
+
+/*media query for smaller desktop screens and smaller this will be applied on any screen smaller than 980px*/
+@media screen and (max-width: 980px){
+   header{
+       padding-bottom: 0;
+       justify-content: center;
+       position: relative; /*sets the header to be look more normal while on phone*/
+   }
+
+   header h1{
+       width: 100%;
+       text-align: center;
+   }
+
+   header nav ul {
+       margin-top: 20px;
+       width: 100%;
+       justify-content: center;
+   }
+
+   header nav ul li a {
+       font-size: 20px;
+   }
+
+   footer h2, footer div{
+       text-align: center;
+       width: 100%;
+   }
+
+   .hero-cta, .hero-form {
+       width: 100%;
+   }
+
+   .hero-cta{
+       text-align: center;
+   }
+
+   .secton-title{
+       width: 80%;
+   }
+
+   .trainer{
+       flex: 0 70%;
+   }
+
+   .contact-info iframe{
+       flex: 1 100%;
+   }
+}
+
+/*media query for tablets and smaller this will be applied on any screen between 768px and 575px */
+@media screen and (max-width: 768px){
+    section {
+        padding: 30px 15px;
+    }
+
+    .step h3{
+        flex: 1 100%;
+        text-align: center;
+    }
+
+    .step-info{
+        flex: 2 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .step-img {
+        flex: 0 32%;
+        margin-right: 0;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .step-text {
+        flex: 100%;
+    }
+}
+
+/*media query for mobile phones and smaller this will be applied on any screen smaller than 575px */
+@media screen and (max-width: 575px){
+
+    .hero-form button {
+        width: 100%
+    }
+    
+    .section-title {
+        width: 95%;
+    }
+
+    .intro p {
+        width: 100%;
+    }
+
+    .trainer{
+        flex: 0 100%;
+    }
+
+    .contact-info {
+        text-align: center;
+    }
+
+    .contact-info >* {
+        flex: 0 100%;
+    }
+
+    .contact-form {
+        order:3;  /* switch places with the map and contact form, idk how or why*/
+    }
+}
+
+
