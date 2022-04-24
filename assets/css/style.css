@@ -36,12 +36,16 @@ header nav{
 
 header nav ul li {
     display: inline;
+    flex-wrap: wrap; /*allows the content to be able to wrap*/
+    justify-content: space-between; /*uses the unused space between two elements and spaces it out*/
+    align-items: center; /*moves items inside the flex on the Y-axis.  so able to go up or down or stetech, or center*/
+    list-style: none; /*removes the bullet points image, able to change the styles with this*/
 }
 
 header nav ul li a {
     margin: 0 30px;
     font-weight: lighter;
-    font-size: 22px;
+    font-size: 1.5vw; /*different value for font size, instead of px we use vw*/
 }
 
 /* Hero Style Start */
