@@ -14,6 +14,8 @@ header {
     background-color: #39a6b2;
     /*displaying flexbox, just this alone gets all the header alligned*/
     display: flex;
+    justify-content: space-between;  /*uses the unused space between two elements and spaces it out*/
+    flex-wrap: wrap;
 }
 
 header h1{
