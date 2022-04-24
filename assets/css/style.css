@@ -51,10 +51,10 @@ header nav ul li a {
 /* Hero Style Start */
 .hero {
   background-image: url('../images/hero-bg.jpg');
-  height: 600px;
+  /*height: 600px; - initially started but since we using flexbox, this is not used anymore*/
   background-size: cover;
   background-position: center;
-  position: relative;
+  /*position: relative;  - initially started but since we using flexbox, this is not used anymore*/
 }
 /* Hero Style End */
 
@@ -62,11 +62,14 @@ header nav ul li a {
   border: 3px solid #024e76;
   background-color: #fce138;
   padding: 20px;
-  width: 500px;
   color: #024e76;
-  position: absolute;
+  justify-content:center;
+  width: 40%; /*using % instead of px, helps with the adjustment of view based on platform of use*/
+  margin: 3.5%;
+  /*position: absolute; -from here to width V
   bottom: 120px;
   right: 140px;
+  width: 500px;     - initially started but since we using flexbox, this is not used anymore*/
 }
 
 .hero-form h3 {
@@ -99,6 +102,20 @@ header nav ul li a {
   font-size: 16px;
 }
 
+.hero-cta{
+    width: 35%;
+    text-align: right;
+    margin: 3.5%;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.3;
+}
+
+.hero-cta h2{
+    font-style: italic;
+    font-size: 55px;
+    color: #fce138;
+}
 
 /* for What we do*/
   .intro {
@@ -210,21 +227,23 @@ header nav ul li a {
     line-height: 1.3;
 }
 
+/*footer start*/
 footer {
     background: #fce138;
     width: 100%;
     padding: 40px 35px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 footer h2 {
-    display: inline;
     color: #024e76;
     font-size: 30px;
     margin: 0;
 }
 
 footer div {
-    float: right;
     line-height: 1.5;
     text-align: right;
 }
@@ -232,6 +251,8 @@ footer div {
 footer a{
     color: #024e76;
 }
+
+/*footer ends*/
 
 /*adds spacing for each section*/
 section {
