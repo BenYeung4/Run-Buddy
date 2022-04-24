@@ -48,16 +48,24 @@ header nav ul li a {
     font-size: 1.5vw; /*different value for font size, instead of px we use vw*/
 }
 
+/*adds spacing for each section*/
+section {
+    padding: 60px;
+}
+
+
+
 /* Hero Style Start */
 .hero {
   background-image: url('../images/hero-bg.jpg');
   /*height: 600px; - initially started but since we using flexbox, this is not used anymore*/
   background-size: cover;
   background-position: center;
+  display: flex;     /* from display to flex-wrap helps set the hero to the right while webpage mode*/
+  justify-content: center;
+  flex-wrap: warp;
   /*position: relative;  - initially started but since we using flexbox, this is not used anymore*/
 }
-/* Hero Style End */
-
 .hero-form {
   border: 3px solid #024e76;
   background-color: #fce138;
@@ -117,7 +125,11 @@ header nav ul li a {
     color: #fce138;
 }
 
+/* Hero Style End */
+
 /* for What we do*/
+
+
   /*.intro {
     text-align: center;
 } --removed due to flexbox*/
@@ -157,6 +169,7 @@ header nav ul li a {
     margin: 0 auto 35px auto;
     width: 50%;
     color: #024e76;
+    border-bottom: 3px solid;   /* gets the border to show on the bottom*/
 }
 
 .primary-border {
@@ -167,7 +180,9 @@ header nav ul li a {
     border-color: #39a6b2;
 }
 
-
+.steps {
+    background: #fce138;
+}
 .step h3{
     flex: 1 30%; /* the 1 represent the size it will take while zooming in and out, comared to .ste-text's flex: 12 which will have 12 x more than usual space*/
     color: #024e76;
@@ -290,10 +305,6 @@ footer a{
 
 /*footer ends*/
 
-/*adds spacing for each section*/
-section {
-    padding: 60px;
-}
 
 /*start of contact-info*/
 .contact{
