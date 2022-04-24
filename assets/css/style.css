@@ -118,9 +118,9 @@ header nav ul li a {
 }
 
 /* for What we do*/
-  .intro {
+  /*.intro {
     text-align: center;
-}
+} --removed due to flexbox*/
 
 .intro p {
     line-height: 1.7;
@@ -129,21 +129,33 @@ header nav ul li a {
     font-size: 20px;
      /* since width has been shrunk, less than 100%, we use margin: 0 auto to help even the boarders, thus centering the text*/
     margin: 0 auto;
+    text-align: center;
   }
 
-/*What You Do*/
-.steps {
-    text-align: center;
+/*Steps section*/
+.step {
+    /*text-align: center; removed due to flexbox*/
     background: #fce138;
+    margin: 50px auto;
+    padding-bottom: 50px;
+    width: 80%;
+    border-bottom: 1px solid #39a6b2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 }
 
+.flex-row{    /*sets the sections to be able to flex*/
+    display: flex;
+}
 /*sets the border colors for all the sections, thus including the .primary, .secondary ... below*/
 .section-title {
     font-size: 55px;
-    display: inline-block;
-    padding: 0 100px 20px 100px;
-    border-bottom: 3px solid;
-    margin-bottom: 35px;
+    padding-bottom: 20px;
+    text-align: center;
+    margin: 0 auto 35px auto;
+    width: 50%;
     color: #024e76;
 }
 
@@ -155,33 +167,49 @@ header nav ul li a {
     border-color: #39a6b2;
 }
 
-.steps div{
-    margin-bottom: 80px;
-}
 
-.steps img {
-    width: 15%;
-    margin: 10px 0;
-}
-
-.steps h3{
+.step h3{
+    flex: 1 30%; /* the 1 represent the size it will take while zooming in and out, comared to .ste-text's flex: 12 which will have 12 x more than usual space*/
     color: #024e76;
     font-size: 46px;
     margin-top: 10px;
 }
 
-.steps p{
+.step-text {
+    flex:12;
+}
+
+.step-text p{
     color: #39a6b2;
-    font-size: 23px;
+    font-size: 18px;
 }
-/* used to get h1,2,3 to arrange size in <p> */
-.steps span {
-    font-size: 38px;
+
+.step-text h4{
+    font-size: 26px;
+    line-height: 1.5;
+    color: #024e76;
 }
+
+.step-info {
+    flex: 2 70%;  /*helps the text grow when screen grows*/
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.step-img {
+    flex: 1 12%;
+    margin-right: 20px;
+}
+
+.step-img img {
+    max-width: 100%;  /*sets the size limit when zooming in and out*/
+}
+
 
 /*trainer section */
 .trainers{
-    text-align: center;
+    /*text-align: center; --removed due to flexbox*/
 }
     /*below, text-left & text-right, are utility tools to align the texts, no generic name so it can be applyed to the html */
 .text-left {
@@ -261,7 +289,7 @@ section {
 
 /*start of contact-info*/
 .contact{
-text-align:center;
+/*text-align:center; -- removed due to flexbox*/
 background-color:#024e76;
 }
 
