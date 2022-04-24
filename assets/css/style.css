@@ -209,50 +209,58 @@ header nav ul li a {
 
 /*trainer section */
 .trainers{
-    /*text-align: center; --removed due to flexbox*/
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
-    /*below, text-left & text-right, are utility tools to align the texts, no generic name so it can be applyed to the html */
+/*text-align: center; --removed due to flexbox
+    below, text-left & text-right, are utility tools to align the texts, no generic name so it can be applyed to the html 
 .text-left {
     text-align: left;
-}
-
 .text-right {
-    text-align: right;
-}
+    text-align: right;  - moves text to the right*/
+
+
+
 .trainer{
-    width: 900px;
-    margin: 0 auto 30px auto;
+    
+    margin:20px;              /* 0 auto 30px auto;*/
     background: #024e76;
     color: #fce138;
-    /* overflow helps tell <article> that there is content inside them and it needs to look for it and take accountable for the file, in turn, centering everything and matching the style */
-    overflow: auto;
+    flex:1; /*if all value of flex is 1, then they share it equaly*/
 }
+    /* was insider trainer for the text coloring width: 900px;
+    overflow helps tell <article> that there is content inside them and it needs to look for it and take accountable for the file, in turn, centering everything and matching the style 
+    overflow: auto;*/
+
 
 .trainer img{
-    width: 35%;
-    float: left;
+    width: 100%;
+    /* float: left; --originally had image be on the left*/
 }
 
 .trainer-bio{
-    padding: 35px;
-    float: left;
-    width: 65%;
+    padding: 25px;
+    line-height: 1.3;
+    
+    /*float: left;
+    width: 65%;  -originally had it till flex-box*/
 }
 
 .trainer-bio h3 {
-    font-size: 32px;
-    margin-bottom: 8px;
+    font-size: 28px;
 }
 
 .trainer-bio h4 {
     font-weight: lighter;
-    font-size: 26px;
-    margin-bottom: 25px;
+    font-size: 22px;
+    margin-bottom: 15px;
 }
 
 .trainer-bio p {
     font-size: 17px;
-    line-height: 1.3;
 }
 
 /*footer start*/
