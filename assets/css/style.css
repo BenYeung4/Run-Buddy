@@ -16,6 +16,13 @@ header {
     display: flex;
     justify-content: space-between;  /*uses the unused space between two elements and spaces it out*/
     flex-wrap: wrap;
+    position: -webkit-sticky; /*never explained what this is for*/
+    position: sticky;  /*keeps the header frozen while scrolling down*/
+    top: 0; /*tells the positions sticky where to freeze*/
+    background-image: url('../images/hero-bg.jpg'); /*these background was added so it can flow*/
+    background-size: cover;
+    background-attachment: fixed; /* this is set with the80% so it can allign witht he bero background*/
+    background-position: 80%; /*goes hand and hand with the background attachment fixed*/
 }
 
 header h1{
@@ -23,6 +30,7 @@ header h1{
     font-size: 36px;
     color: #fce138;
     margin: 0;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5); /*sets the shadow with the 10px, then the color black, and last is the transparancy*/
 }
 
 header a {
@@ -47,6 +55,7 @@ header nav ul li a {
     padding: 10px 15px;  /*created a tighter navigation menu*/
     font-weight: lighter;
     font-size: 1.5vw; /*different value for font size, instead of px we use vw*/
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 /*adds spacing for each section*/
@@ -54,13 +63,20 @@ section {
     padding: 60px;
 }
 
+header nav ul li a:hover {  /*this is to set the effect of the button*/
+    background: #fce138;
+    color: #024e76;
+    border-radius: 15px;
+    text-shadow: none;
+}
 
 
 /* Hero Style Start */
 .hero {
   background-image: url('../images/hero-bg.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: 80%;
+  background-attachment: fixed;
   display: flex;     /* from display to flex-wrap helps set the hero to the right while webpage mode*/
   justify-content: center;
   flex-wrap: wrap;
@@ -70,12 +86,14 @@ section {
 }
 .hero-form {
   border: 3px solid #024e76;
-  background-color: #fce138;
+  background-color: rgba(252,225,56,0.8);  /*sets the overall background to be yellow and transparent*/
   padding: 20px;
   color: #024e76;
   justify-content:center;
   width: 40%; /*using % instead of px, helps with the adjustment of view based on platform of use*/
   margin: 3.5%;
+  box-shadow: 0 0 10px rgba(252,225,56,0.8); /* sets transparancy with the color, google HEX to RGB converter*/
+  border-radius: 15px;  /* rounds the borders*/
   /*position: absolute; -from here to width V
   bottom: 120px;
   right: 140px;
@@ -98,8 +116,14 @@ section {
   color: #024e76;
   width: 100%;
   margin-bottom: 15px;
+  border-radius: 15px;  /* rounds the borders*/
+  background-color: rgba(255,255,255, 0.75); /*sets the color and transparancy of the text*/
 }
 
+.form-input:focus{
+    background-color: rgba(255,255,255,1);  /*makes the before input to be transparent*/
+    outline: none; /*removes the border when the item is highlighted this way it looks better and rounded with the setting*/
+}
 .hero-form label {
   margin: 0 5px;
 }
@@ -110,6 +134,7 @@ section {
   border: none;
   padding: 10px 20px;
   font-size: 16px;
+  border-radius: 15px;  /* rounds the borders*/
 }
 
 .hero-cta{
@@ -125,8 +150,12 @@ section {
     font-style: italic;
     font-size: 55px;
     color: #fce138;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
+.hero-form button:hover { /*set effect for button*/
+background-color: #39a6b2;
+}
 /* Hero Style End */
 
 /* for What we do*/
@@ -153,11 +182,16 @@ section {
     margin: 50px auto;
     padding-bottom: 50px;
     width: 80%;
-    border-bottom: 1px solid #39a6b2;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    
+}
+
+.step:not(:last-child){   /*sets the border for everything on the steps besides the very last one*/
+    border-bottom: 1px solid #39a6b2;
+}
 }
 
 .flex-row{    /*sets the sections to be able to flex*/
@@ -367,6 +401,7 @@ height: 400px;
     width: 100%;
     margin-bottom: 15px;
     margin-top: 5px;
+    border-radius: 15px;  /* rounds the borders*/
 }
 
 .contact-form button{
@@ -377,6 +412,21 @@ height: 400px;
     text-align: center;
     padding: 15px 0;
     font-size: 16px;
+    border-radius: 15px;  /* rounds the borders*/
+}
+
+.contact-form button:hover { /*set effect for button*/
+    color: #fce138;
+    background: #39a6b2;
+}
+
+.contact-form input, .contact-form textarea{ /*transprent background until clicked*/
+background-color: rgba(255,255,255,0.75);
+outline: none;
+}
+.contact-form input:focus, .contact-form textarea:focus{ /*when clicked, not transparent anymore*/
+background-color: rgba(255,255,255, 1);
+outline: none;
 }
 /*Reach out styles end*/
 
@@ -386,6 +436,7 @@ height: 400px;
    header{
        padding-bottom: 0;
        justify-content: center;
+       position: relative; /*sets the header to be look more normal while on phone*/
    }
 
    header h1{
@@ -489,3 +540,5 @@ height: 400px;
         order:3;  /* switch places with the map and contact form, idk how or why*/
     }
 }
+
+
