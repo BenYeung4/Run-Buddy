@@ -4,38 +4,44 @@
     box-sizing: border-box;
 }
 
+:root{
+    --primary-color: #fce138;
+    --secondary-color: #024e76;
+    --tertiary-color: #39a6b2;
+}
 body {
-    color: #39a6b2;
+    color: var(--tertiary-color);
     font-family: Helvetica, Arial, sans-serif;
   }
 
 header {
     padding: 20px 35px;
-    background-color: #39a6b2;
+    background-color: var(--tertiary-color);
     /*displaying flexbox, just this alone gets all the header alligned*/
     display: flex;
     justify-content: space-between;  /*uses the unused space between two elements and spaces it out*/
     flex-wrap: wrap;
-    position: -webkit-sticky; /*never explained what this is for*/
+    position: -webkit-sticky; /*put this in, for older web browesers to use*/
     position: sticky;  /*keeps the header frozen while scrolling down*/
     top: 0; /*tells the positions sticky where to freeze*/
     background-image: url('../images/hero-bg.jpg'); /*these background was added so it can flow*/
     background-size: cover;
     background-attachment: fixed; /* this is set with the80% so it can allign witht he bero background*/
     background-position: 80%; /*goes hand and hand with the background attachment fixed*/
+    z-index: 9999; /*keeping only the header stuff on top*/
 }
 
 header h1{
     font-weight: bold;
     font-size: 36px;
-    color: #fce138;
+    color: var(--primary-color);
     margin: 0;
     text-shadow: 0 0 10px rgba(0,0,0,0.5); /*sets the shadow with the 10px, then the color black, and last is the transparancy*/
 }
 
 header a {
     text-decoration: none;
-    color: #fce138;
+    color: var(--primary-color);
 }
 
 header nav{
@@ -64,8 +70,8 @@ section {
 }
 
 header nav ul li a:hover {  /*this is to set the effect of the button*/
-    background: #fce138;
-    color: #024e76;
+    background: var(--primary-color);
+    color: var(--secondary-color);
     border-radius: 15px;
     text-shadow: none;
 }
@@ -85,14 +91,13 @@ header nav ul li a:hover {  /*this is to set the effect of the button*/
   /*position: relative;  - initially started but since we using flexbox, this is not used anymore*/
 }
 .hero-form {
-  border: 3px solid #024e76;
+  border: 3px solid var(--secondary-color);
   background-color: rgba(252,225,56,0.8);  /*sets the overall background to be yellow and transparent*/
   padding: 20px;
-  color: #024e76;
-  justify-content:center;
+  color: var(--secondary-color);
   width: 40%; /*using % instead of px, helps with the adjustment of view based on platform of use*/
   margin: 3.5%;
-  box-shadow: 0 0 10px rgba(252,225,56,0.8); /* sets transparancy with the color, google HEX to RGB converter*/
+  box-shadow: 0 0 10px rgba(0,0,0,0.5); /* sets transparancy with the color, google HEX to RGB converter*/
   border-radius: 15px;  /* rounds the borders*/
   /*position: absolute; -from here to width V
   bottom: 120px;
@@ -109,11 +114,11 @@ header nav ul li a:hover {  /*this is to set the effect of the button*/
 }
 
 .form-input {
-  border: 1px solid #024e76;
+  border: 1px solid var(--secondary-color);
   display: block;
   padding: 7px 15px;
   font-size: 16px;
-  color: #024e76;
+  color: var(--secondary-color);
   width: 100%;
   margin-bottom: 15px;
   border-radius: 15px;  /* rounds the borders*/
@@ -129,8 +134,8 @@ header nav ul li a:hover {  /*this is to set the effect of the button*/
 }
 
 .hero-form button {
-  color: #fce138;
-  background-color: #024e76;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
   border: none;
   padding: 10px 20px;
   font-size: 16px;
@@ -149,13 +154,77 @@ header nav ul li a:hover {  /*this is to set the effect of the button*/
 .hero-cta h2{
     font-style: italic;
     font-size: 55px;
-    color: #fce138;
+    color: var(--primary-color);
     text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .hero-form button:hover { /*set effect for button*/
-background-color: #39a6b2;
+background-color: var(--tertiary-color);
 }
+
+.checkbox-wrapper input, .radio-wrapper input {
+    opacity: 0; /* makes the chekcboxes invisiable*/
+}
+
+.checkbox-wrapper label, .radio-wrapper label { /*sets the location of the checkboxes*/
+    position: relative;
+    left: 10px;
+    margin: 10px;
+    line-height: 1.6;
+}
+
+.checkbox-wrapper label::before, .radio-wrapper label::before {  /* produces the boxes for the checkbox before activating them*/
+    content: "";
+    height: 20px;
+    width: 20px;
+    background: rgba(255, 255, 255, 0.75);  
+    border: 1px solid var(--secondary-color);  
+    position: absolute;
+    top: -4px;
+    left: -30px;
+}
+
+.radio-wrapper label::before { /*rounds the boxes*/
+    border-radius: 50%;
+}
+
+.radio-wrapper label::after {
+    content:"";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    position: absolute;
+    left: -29px;
+    top: -3px;
+    background-image: radial-gradient(circle, var(--tertiary-color), var(--secondary-color));  /*makes the button look radient*/
+}
+
+.checkbox-wrapper label::after{
+    content:"";
+    height: 6px;
+    width: 14px;
+    border-left: 2px solid var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    position: absolute;
+    left: -26px;
+    top: 1px;
+    transform: rotate(-58deg);  /*rotates the check mark*/
+}
+
+
+
+.checkbox-wrapper input + label::after, 
+.radio-wrapper input + label::after {
+  content: none;  /*makes it that after clicking, it shows*/
+}
+
+.checkbox-wrapper input:checked + label::after, 
+.radio-wrapper input:checked + label::after {
+  content: "";
+}
+
+
 /* Hero Style End */
 
 /* for What we do*/
@@ -167,7 +236,7 @@ background-color: #39a6b2;
 
 .intro p {
     line-height: 1.7;
-    color: #39a6b2;
+    color: var(--tertiary-color);
     width: 80%;
     font-size: 20px;
      /* since width has been shrunk, less than 100%, we use margin: 0 auto to help even the boarders, thus centering the text*/
@@ -178,7 +247,7 @@ background-color: #39a6b2;
 /*Steps section*/
 .step {
     /*text-align: center; removed due to flexbox*/
-    background: #fce138;
+    background: var(--primary-color);
     margin: 50px auto;
     padding-bottom: 50px;
     width: 80%;
@@ -190,7 +259,7 @@ background-color: #39a6b2;
 }
 
 .step:not(:last-child){   /*sets the border for everything on the steps besides the very last one*/
-    border-bottom: 1px solid #39a6b2;
+    border-bottom: 1px solid var(--tertiary-color);
 }
 }
 
@@ -204,24 +273,24 @@ background-color: #39a6b2;
     text-align: center;
     margin: 0 auto 35px auto;
     width: 50%;
-    color: #024e76;
+    color: var(--secondary-color);
     border-bottom: 3px solid;   /* gets the border to show on the bottom*/
 }
 
 .primary-border {
-    border-color: #fce138;
+    border-color: var(--primary-color);
 }
 
 .secondary-border {
-    border-color: #39a6b2;
+    border-color: var(--tertiary-color);
 }
 
 .steps {
-    background: #fce138;
+    background: var(--primary-color);
 }
 .step h3{
     flex: 1 30%; /* the 1 represent the size it will take while zooming in and out, comared to .ste-text's flex: 12 which will have 12 x more than usual space*/
-    color: #024e76;
+    color: var(--secondary-color);
     font-size: 46px;
     margin-top: 10px;
 }
@@ -231,14 +300,14 @@ background-color: #39a6b2;
 }
 
 .step-text p{
-    color: #39a6b2;
+    color: var(--tertiary-color);
     font-size: 18px;
 }
 
 .step-text h4{
     font-size: 26px;
     line-height: 1.5;
-    color: #024e76;
+    color: var(--secondary-color);
 }
 
 .step-info {
@@ -278,8 +347,8 @@ background-color: #39a6b2;
 .trainer{
     
     margin:20px;              /* 0 auto 30px auto;*/
-    background: #024e76;
-    color: #fce138;
+    background: var(--secondary-color);
+    color: var(--primary-color);
     flex:1; /*if all value of flex is 1, then they share it equaly*/
 }
     /* was insider trainer for the text coloring width: 900px;
@@ -316,7 +385,7 @@ background-color: #39a6b2;
 
 /*footer start*/
 footer {
-    background: #fce138;
+    background: var(--primary-color);
     width: 100%;
     padding: 40px 35px;
     display: flex;
@@ -325,7 +394,7 @@ footer {
 }
 
 footer h2 {
-    color: #024e76;
+    color: var(--secondary-color);
     font-size: 30px;
     margin: 0;
 }
@@ -336,7 +405,7 @@ footer div {
 }
 
 footer a{
-    color: #024e76;
+    color: var(--secondary-color);
 }
 
 /*footer ends*/
@@ -345,7 +414,7 @@ footer a{
 /*start of contact-info*/
 .contact{
 /*text-align:center; -- removed due to flexbox*/
-background-color:#024e76;
+background-color:var(--secondary-color);
 }
 
 .contact-info{
@@ -359,7 +428,7 @@ background-color:#024e76;
     margin: 15px;
 }
 .contact h2{
-color:#fce138;
+color: var(--primary-color);
 }
 
 .contact-info iframe{
@@ -377,7 +446,7 @@ height: 400px;
 }
 
 .contact-info h3{
-    color: #fce138;
+    color: var(--primary-color);
     font-size: 32px;
 }
 
@@ -389,15 +458,15 @@ height: 400px;
 }
 
 .contact-info a{
-    color: #fce138;
+    color: var(--primary-color);
 }
 
 .contact-form input, .contact-form textarea{
-    border: 1px solid #024e76;
+    border: 1px solid var(--secondary-color);
     display: block;
     padding: 7px 15px;
     font-size: 16px;
-    color: #024e76;
+    color: var(--secondary-color);
     width: 100%;
     margin-bottom: 15px;
     margin-top: 5px;
@@ -407,8 +476,8 @@ height: 400px;
 .contact-form button{
     width: 100%;
     border: none;
-    background: #fce138;
-    color: #024e76;
+    background: var(--primary-color);
+    color: var(--secondary-color);
     text-align: center;
     padding: 15px 0;
     font-size: 16px;
@@ -416,8 +485,8 @@ height: 400px;
 }
 
 .contact-form button:hover { /*set effect for button*/
-    color: #fce138;
-    background: #39a6b2;
+    color: var(--primary-color);
+    background: var(--tertiary-color);
 }
 
 .contact-form input, .contact-form textarea{ /*transprent background until clicked*/
