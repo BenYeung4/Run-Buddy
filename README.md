@@ -27,7 +27,8 @@ Below are the instructions and examples for use:
 User enters name, email address, phone number, to sign up for exercise program
 
 Screenshot:
-[Capture](https://user-images.githubusercontent.com/52897163/174943051-5b324d65-ba42-4a0d-9587-0adae5aa6fbe.JPG)
+![Capture](https://user-images.githubusercontent.com/52897163/174943283-9f4a184d-1b51-4165-a38f-331ec37889e9.JPG)
+
 
 ## Contributors:
 
