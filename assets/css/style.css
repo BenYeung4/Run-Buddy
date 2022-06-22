@@ -261,7 +261,7 @@ background-color: var(--tertiary-color);
 .step:not(:last-child){   /*sets the border for everything on the steps besides the very last one*/
     border-bottom: 1px solid var(--tertiary-color);
 }
-}
+
 
 .flex-row{    /*sets the sections to be able to flex*/
     display: flex;
