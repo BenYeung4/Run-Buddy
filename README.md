@@ -26,8 +26,8 @@ git clone, just run in default browser
 Below are the instructions and examples for use:
 User enters name, email address, phone number, to sign up for exercise program
 
-Screenshot located at:
-![Screenshot](https://user-images.githubusercontent.com/52897163/174462984-c4b06b85-488e-4cf1-b7cf-c89a42bb08ed.png)
+Screenshot:
+[Capture](https://user-images.githubusercontent.com/52897163/174943051-5b324d65-ba42-4a0d-9587-0adae5aa6fbe.JPG)
 
 ## Contributors:
 
